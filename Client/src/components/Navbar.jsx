@@ -1,5 +1,5 @@
 import { MenuRounded } from '@mui/icons-material'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link as LinkR, NavLink } from "react-router-dom";
 import LogoImg from "../utils/Images/Logo.png";
@@ -117,27 +117,28 @@ const MobileMenu = styled.ul`
     top: 80px;
     right: 0;
     transition: all 0.6s ease-in-out;
-    transform: ${({ isOpen }) =>
-        isOpen ? "translateY(0)" : "translateY(-100%)"};
+    transform: ${({ $isOpen }) => ($isOpen ? "translateY(0)" : "translateY(-100%)")};
     border-radius: 0 0 20px 20px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
-    z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
+    opacity: ${({ $isOpen }) => ($isOpen ? "100%" : "0")};
+    z-index: ${({ $isOpen }) => ($isOpen ? "1000" : "-1000")};
 `;
 
+
 function Navbar() {
+    const [isOpen, setisOpen] = useState(false);
 return (
     <Nav>
         <NavContainer>
-            <Mobileicon>
-                <MenuRounded/>
+            <Mobileicon onClick={() => setisOpen(!isOpen)}>
+                <MenuRounded sx={{ color: "inherit" }} />
             </Mobileicon>
             <NavLogo to="/">
                 <Logo src={LogoImg} />
                 Fittrack
             </NavLogo>
 
-            <MobileMenu>
+            <MobileMenu $isOpen={isOpen}>
             <Navlink to="/">Dashboard</Navlink>
             <Navlink to="/workouts">Workouts</Navlink>
             <Navlink to="/tutorials">Tutorials</Navlink>
