@@ -113,9 +113,7 @@ function Dashboard() {
         <Section>
             <Title>Todays Workouts</Title>
             <CardWrapper>
-            {todaysWorkouts.map((workout) => (
-                <WorkoutCard workout={workout} />
-            ))}
+                <WorkoutCard />
             </CardWrapper>
         </Section>
         </Wrapper>
