@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     gap: 22px;
     @media (max-width: 600px) {
         gap: 12px;
-    
+    }
 `;
 const Title = styled.div`
     padding: 0px 16px;
