@@ -46,7 +46,8 @@ export const UserLogin = async (req, res, next) => {
             return next(createError(404, "Email not found!"));
         }
 
-        const isPasswordCorrect = await bcrypt.compareSync(password, user.password);
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
 
         if (!isPasswordCorrect) {
             return next(createError(403, "Incorrect Password"))
@@ -202,10 +203,8 @@ export const getWorkoutByDate = async (req, res, next) => {
             date.getDate() + 1
         );
 
-        const todaysWorkouts = await Workout.find({
-            userId: userId,
-            date: { $gte: startOfDay, $lt: endOfDay },
-        });
+        const todaysWorkouts = await Workout.find({ user: userId, date: { $gte: startOfDay, $lt: endOfDay } });
+
 
         const totalCaloriesBurnt = todaysWorkouts.reduce((total, workout) => total + workout.caloriesBurned, 0)
 
@@ -296,5 +295,13 @@ const parseWorkoutLine = (parts) => {
         console.log(details);
         return details;
     }
+
     return null;
+};
+// Function to calculate calories burnt for a workout
+const calculateCaloriesBurnt = (workoutDetails) => {
+    const durationInMinutes = parseInt(workoutDetails.duration);
+    const weightInKg = parseInt(workoutDetails.weight);
+    const caloriesBurntPerMinute = 5; // Sample value, actual calculation may vary
+    return durationInMinutes * caloriesBurntPerMinute * weightInKg;
 };
