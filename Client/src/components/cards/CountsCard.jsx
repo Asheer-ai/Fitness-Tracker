@@ -9,7 +9,7 @@ const Card = styled.div`
   border-radius: 14px;
   display: flex;
   gap: 6px;
-  box-shadow: 1px 6px 20px 0px ${({ theme }) => theme.primary + 15};
+  box-shadow: 1px 6px 20px 0px ${({ theme }) => theme.primary + 10};
 `;
 const Left = styled.div`
   flex: 1;

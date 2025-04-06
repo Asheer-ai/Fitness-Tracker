@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { Link as LinkR, NavLink } from "react-router-dom";
 import LogoImg from "../utils/Images/Logo.png";
 import { Avatar } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { logout } from '../redux/reducers/userSlice';
 
 const Nav = styled.div`
     background-color: ${({ theme }) => theme.bg};
@@ -16,7 +18,7 @@ const Nav = styled.div`
     top: 0;
     z-index: 10;
     color: white;
-    border-bottom: 1px solid ${({ theme }) => theme.text_secondary + 20};
+    border-bottom: 1px solid ${({ theme }) => theme.text_secondary + 40};
 `;
 const Logo = styled.img`
     height: 42px;
@@ -124,8 +126,23 @@ const MobileMenu = styled.ul`
     z-index: ${({ $isOpen }) => ($isOpen ? "1000" : "-1000")};
 `;
 
+const ToggleButton = styled.div`
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 12px;
+    background-color: ${({ theme }) => theme.menu_secondary_text + 20};
+    color: ${({ theme }) => theme.menu_primary_text};
+    &:hover {
+        background-color: ${({ theme }) => theme.primary};
+        color: #fff;
+    }
+`;
 
-function Navbar() {
+
+function Navbar({toggleTheme, darkMode,currentUser}) {
+    const dispatch=useDispatch();
     const [isOpen, setisOpen] = useState(false);
 return (
     <Nav>
@@ -155,8 +172,11 @@ return (
             </NavItems>
 
             <UserContainer>
-                <Avatar />
-                <TextButton>Logout</TextButton>
+            <ToggleButton onClick={toggleTheme}>
+                {darkMode ? "☀️ Light" : "🌙 Dark"}
+            </ToggleButton>
+                <Avatar src={currentUser?.img}>{currentUser?.name[0]}</Avatar>
+                <TextButton onClick={() => dispatch(logout())}>Logout</TextButton>
         </UserContainer>
         </NavContainer>
     </Nav>

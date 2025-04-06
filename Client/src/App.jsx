@@ -1,12 +1,13 @@
 import {ThemeProvider,styled} from "styled-components"
 import './App.css'
-import { lightTheme } from "./utils/Themes"
+import { lightTheme,darkTheme } from "./utils/Themes"
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Authentication from "./pages/Authentication";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Workouts from "./pages/Workouts";
+import { useSelector } from "react-redux";
 
 const Container=styled.div`
   width: 100%;
@@ -21,15 +22,21 @@ const Container=styled.div`
 
 function App() {
 
-  const [user,setUser]=useState(true)
+  const { currentUser }=useSelector((state)=>state.user)
+  const [darkMode, setDarkMode] = useState(false); 
+  const toggleTheme = () => setDarkMode((prev) => !prev);
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
     <BrowserRouter>
-      {user ? (<Container>
-        <Navbar/>
+      {currentUser ? (<Container>
+        <Navbar 
+        currentUser={currentUser}
+        toggleTheme={toggleTheme}
+        darkMode={darkMode}
+        />
         <Routes>
-          <Route path="/" exact element={<Dashboard/>}/>
-          <Route path="/workouts" exact element={<Workouts/>}/>
+          <Route path="/"  element={<Dashboard/>}/>
+          <Route path="/workouts" element={<Workouts darkMode={darkMode} />} />
         </Routes>
         </Container>):(
       <Container><Authentication/></Container>

@@ -1,5 +1,5 @@
 import { FitnessCenterRounded, TimelapseRounded } from '@mui/icons-material';
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 const Card = styled.div`
@@ -12,11 +12,12 @@ const Card = styled.div`
   box-shadow: 1px 6px 20px 0px ${({ theme }) => theme.primary + 15};
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
   @media (max-width: 600px) {
     padding: 12px 14px;
   }
 `;
+
 const Category = styled.div`
   width: fit-content;
   font-size: 14px;
@@ -26,22 +27,28 @@ const Category = styled.div`
   padding: 4px 10px;
   border-radius: 8px;
 `;
+
 const Name = styled.div`
   font-size: 20px;
   color: ${({ theme }) => theme.text_primary};
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
+
 const Sets = styled.div`
   font-size: 15px;
   color: ${({ theme }) => theme.text_secondary};
   font-weight: 500;
-  display: flex;
-  gap: 6px;
 `;
+
 const Flex = styled.div`
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 `;
+
 const Details = styled.div`
   font-size: 15px;
   color: ${({ theme }) => theme.text_primary};
@@ -51,26 +58,26 @@ const Details = styled.div`
   gap: 6px;
 `;
 
-function WorkoutCard() {
-    return (
+const WorkoutCard = ({ workout }) => {
+  return (
     <Card>
-        <Category>#Legs</Category>
-        <Name>Back Squats</Name>
-        <Sets>
-            Count: 5 sets X 15 reps
-        </Sets>
-        <Flex>
-            <Details>
-            <FitnessCenterRounded sx={{ fontSize: "20px" }} />
-            30 kg
-            </Details>
-            <Details>
-            <TimelapseRounded sx={{ fontSize: "20px" }} />
-            10 min
-            </Details>
-        </Flex>
-        </Card>
-    )
-}
+      <Category>#{workout?.category || 'Category'}</Category>
+      <Name>{workout?.workoutName || 'Workout Name'}</Name>
+      <Sets>
+        Count: {workout?.sets || 0} sets × {workout?.reps || 0} reps
+      </Sets>
+      <Flex>
+        <Details>
+          <FitnessCenterRounded sx={{ fontSize: '20px' }} />
+          {workout?.weight || 0} kg
+        </Details>
+        <Details>
+          <TimelapseRounded sx={{ fontSize: '20px' }} />
+          {workout?.duration || 0} min
+        </Details>
+      </Flex>
+    </Card>
+  );
+};
 
-export default WorkoutCard
+export default WorkoutCard;
