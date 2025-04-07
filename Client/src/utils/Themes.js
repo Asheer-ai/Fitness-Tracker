@@ -1,5 +1,5 @@
 export const lightTheme = {
-    bg: "#FFFFFF",
+    bg: "linear-gradient(to right, #e2e2e2, #c9d6ff)",
     bgLight: "#FFFFFF",
     primary: "#007AFF",
     secondary: "#5B86E5",
