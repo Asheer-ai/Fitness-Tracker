@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Workouts from "./pages/Workouts";
 import { useSelector } from "react-redux";
 import Contact from "./pages/Contact";
+import ExerciseExplorer from "./pages/ExerciseExplorer";
 
 const Container=styled.div`
   width: 100%;
@@ -39,6 +40,7 @@ function App() {
           <Route path="/"  element={<Dashboard/>}/>
           <Route path="/workouts" element={<Workouts darkMode={darkMode} />} />
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/tutorials" element={<ExerciseExplorer/>}/>
         </Routes>
         </Container>):(
       <Container><Authentication/></Container>
