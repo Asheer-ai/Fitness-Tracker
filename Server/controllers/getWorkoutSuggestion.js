@@ -20,17 +20,17 @@ export const getWorkoutSuggestion = async (req, res, next) => {
             return res.status(200).json({
                 suggestion: `You don't have any workout history yet. Here's a basic beginner plan:
 
-#Full Body
-- Bodyweight Squats
-- 3 sets 15 reps
-- 0 kg
-- 5 min
+            #Full Body
+            - Bodyweight Squats
+            - 3 sets 15 reps
+            - 0 kg
+            - 5 min
 
-#Cardio
-- Brisk Walking
-- 1 set 20 min
-- 0 kg
-- 20 min`
+            #Cardio
+            - Brisk Walking
+            - 1 set 20 min
+            - 0 kg
+            - 20 min`
             });
         }
 
@@ -39,23 +39,35 @@ export const getWorkoutSuggestion = async (req, res, next) => {
         }).join("\n");
         // Get the most recent workout (last one)
         const previousLine = formattedWorkouts.split('\n').slice(-1)[0];
+        console.log("recent workout",previousLine)
 
         // Extract category only (to prefix with #)
         const category = previousLine.split(',')[0].split(':')[1].trim();
+        console.log("previous category",category)
+
+        const workoutNames = recentWorkouts.map(w => w.workoutName).join(", ");
+        console.log("all workout names",workoutNames)
+
         const prompt = `
-    The user did this workout previously:
-    ${previousLine}
+        You are a strict workout assistant.
 
-    Now suggest one **new** workout of the **same muscle group** that is **not a repeat**. Follow this **exact format** with 5 lines:
+        The user did this workout previously:
+        ${previousLine}
 
-    #${category}  
-    -Workout Name  
-    -x setsXy reps  
-    -z kg or Bodyweight  
-    -d min
+        Now generate ONE **new** workout that:
+        - Belongs ONLY to the *same* muscle category: "${category}"
+        - Is not a repeat
+        -Exclude previous workouts: ${workoutNames}
+        - Follow this **exact format** with 5 lines:
 
-    ⚠️ Return **only one workout**, no explanations or intros. Keep it short and clean.
-    `;
+        #${category}  
+        -Workout Name  
+        -x setsXy reps  
+        -z kg or Bodyweight  
+        -d min
+
+        ⚠️ Return **only one workout**, no explanations or intros. Keep it short and clean.
+        `;
 
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
