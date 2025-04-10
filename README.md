@@ -1,6 +1,6 @@
-# 💪 FitTrack - Fitness Tracker App
+# 💪 TrackFitPro - AI Fitness Tracker App
 
-FitTrack is a full-stack fitness tracker web application that helps users log their workouts, track progress, and visualize stats — all in a clean, responsive UI with support for light and dark themes.
+TrackFitPro is a full-stack fitness tracker web application that helps users log their workouts, track progress, and visualize stats — all in a clean, responsive UI with support for light and dark themes. It also integrates AI-generated workout suggestions to optimize training.
 
 ---
 
@@ -32,6 +32,11 @@ FitTrack is a full-stack fitness tracker web application that helps users log th
   - Custom styles for calendar days (black/white text based on theme)
   - Fetches and displays workouts for selected date
 
+### 🤖 AI Workout Suggestion
+- Integrated with Gemini API for generating personalized workout plans
+- Users get suggestions based on preferences or routines
+- Accessible from the dashboard
+
 ### 🔐 Token-Based Authentication
 - Uses tokens from `localStorage` for protected API routes
 - API Functions:
@@ -51,15 +56,19 @@ FitTrack is a full-stack fitness tracker web application that helps users log th
 - **Material UI (MUI)**
 - **Day.js**
 
-### Backend (assumed/connected via APIs):
-- Node.js + Express (API routes like `getWorkouts`, `addWorkout`, etc.)
+### Backend:
+- **Node.js + Express** (API routes like `getWorkouts`, `addWorkout`, etc.)
+- **Gemini API** for AI workout generation
 
 ---
- ## 📁 Folder Structure 
+
+## 📁 Folder Structure
 <pre lang="markdown">
-Fitness-Tracker/
+trackFitPro/
 ├─ Client/
 │  ├─ public/
+│  │  ├─ AuthImage.jpg
+│  │  ├─ Logo.png
 │  │  └─ vite.svg
 │  ├─ src/
 │  │  ├─ api/
@@ -80,7 +89,9 @@ Fitness-Tracker/
 │  │  │  └─ TextInput.jsx
 │  │  ├─ pages/
 │  │  │  ├─ Authentication.jsx
+│  │  │  ├─ Contact.jsx
 │  │  │  ├─ Dashboard.jsx
+│  │  │  ├─ ExerciseExplorer.jsx
 │  │  │  └─ Workouts.jsx
 │  │  ├─ redux/
 │  │  │  ├─ reducers/
@@ -101,22 +112,23 @@ Fitness-Tracker/
 │  ├─ index.html
 │  ├─ package-lock.json
 │  ├─ package.json
-│  ├─ README.md
 │  └─ vite.config.js
-└─ Server/
-   ├─ controllers/
-   │  └─ UserController.js
-   ├─ Middleware/
-   │  └─ verifyToken.js
-   ├─ models/
-   │  ├─ User.js
-   │  └─ Workout.js
-   ├─ routes/
-   │  └─ UserRoute.js
-   ├─ .env
-   ├─ .gitignore
-   ├─ error.js
-   ├─ index.js
-   ├─ package-lock.json
-   └─ package.json
-
+├─ Server/
+│  ├─ controllers/
+│  │  ├─ getWorkoutSuggestion.js
+│  │  └─ UserController.js
+│  ├─ Middleware/
+│  │  └─ verifyToken.js
+│  ├─ models/
+│  │  ├─ User.js
+│  │  └─ Workout.js
+│  ├─ routes/
+│  │  └─ UserRoute.js
+│  ├─ .env
+│  ├─ .gitignore
+│  ├─ error.js
+│  ├─ index.js
+│  ├─ package-lock.json
+│  └─ package.json
+└─ README.md
+</pre>
