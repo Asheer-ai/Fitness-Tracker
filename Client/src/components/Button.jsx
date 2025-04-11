@@ -9,12 +9,14 @@ const Button = styled.div`
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
+  width: 50%;
+  
   align-items: center;
   justify-content: center;
   gap: 6px;
   height: min-content;
   padding: 16px 26px;
-  box-shadow: 1px 20px 35px 0px ${({ theme }) => theme.primary + 40};
+  box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.primary + 30};
   border: 1px solid ${({ theme }) => theme.primary};
   @media (max-width: 600px) {
     padding: 8px 12px;

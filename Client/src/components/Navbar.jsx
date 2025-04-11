@@ -132,12 +132,9 @@ const ToggleButton = styled.div`
     font-weight: 600;
     padding: 6px 12px;
     border-radius: 12px;
-    background-color: ${({ theme }) => theme.menu_secondary_text + 20};
+    background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.menu_primary_text};
-    &:hover {
-        background-color: ${({ theme }) => theme.primary};
-        color: #fff;
-    }
+    
 `;
 
 
@@ -152,7 +149,7 @@ return (
             </Mobileicon>
             <NavLogo to="/">
                 <Logo src={LogoImg} />
-                Fittrack
+                TrackFitPro
             </NavLogo>
 
             <MobileMenu $isOpen={isOpen}>

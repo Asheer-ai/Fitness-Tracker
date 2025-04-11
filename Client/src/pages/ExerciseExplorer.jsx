@@ -16,13 +16,26 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 22px;
+  padding: 0 20px; /* Add padding to left and right */
+
+  @media (max-width: 768px) {
+    padding: 0 16px; /* Slightly smaller padding for tablets */
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 12px; /* Smaller padding for mobile */
+  }
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
-`;
+
+  @media (max-width: 480px) {
+    gap: 16px; /* Slightly tighter spacing on very small screens */
+  }
+  `;
 
 const Card = styled.div`
   border: 1px solid #ccc;

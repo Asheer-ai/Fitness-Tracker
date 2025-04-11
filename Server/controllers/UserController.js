@@ -4,8 +4,12 @@ import dotenv from 'dotenv';
 import User from '../models/User.js';
 import Workout from '../models/Workout.js';
 import { createError } from '../error.js';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 
 dotenv.config();
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export const UserRegister = async (req, res, next) => {
     try {
@@ -266,7 +270,7 @@ export const addWorkout = async (req, res, next) => {
         });
 
         for (const workout of parsedWorkouts) {
-            workout.caloriesBurned = parseFloat(calculateCaloriesBurnt(workout));
+            workout.caloriesBurned = parseFloat(await calculateCaloriesBurnt(workout));
             await Workout.create({ ...workout, user: userId });
         }
 
@@ -280,6 +284,22 @@ export const addWorkout = async (req, res, next) => {
     }
 };
 
+export const getCaloriesPerMinuteFromGemini = async (workoutName) => {
+    try {
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        const prompt = `Estimate the average number of calories burnt per minute for the workout: "${workoutName}". Only return a number without any extra text.`;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response.text();
+
+        const calories = parseFloat(response);
+        if (isNaN(calories)) return 5; // fallback default
+        return calories;
+    } catch (error) {
+        console.error("Gemini Error:", error.message);
+        return 5; // fallback default
+    }
+};
 
 const parseWorkoutLine = (parts) => {
     const details = {};
@@ -299,9 +319,13 @@ const parseWorkoutLine = (parts) => {
     return null;
 };
 // Function to calculate calories burnt for a workout
-const calculateCaloriesBurnt = (workoutDetails) => {
+const calculateCaloriesBurnt = async (workoutDetails) => {
     const durationInMinutes = parseInt(workoutDetails.duration);
     const weightInKg = parseInt(workoutDetails.weight);
-    const caloriesBurntPerMinute = 5; // Sample value, actual calculation may vary
-    return durationInMinutes * caloriesBurntPerMinute * weightInKg;
+
+    const caloriesBurntPerMinute = await getCaloriesPerMinuteFromGemini(workoutDetails.workoutName);
+
+    console.log(caloriesBurntPerMinute);
+
+    return durationInMinutes * caloriesBurntPerMinute;
 };
