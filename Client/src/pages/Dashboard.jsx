@@ -187,6 +187,10 @@ function Dashboard() {
         getTodaysWorkout();
     }, []);
 
+    useEffect(() => {
+      console.log(data);  // Log the entire data object
+  }, [data]);
+
     return (
         <Container>
             <Wrapper>

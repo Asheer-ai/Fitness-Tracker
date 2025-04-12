@@ -78,7 +78,7 @@ const Button = styled.button`
   font-weight: 600;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 50%;
   }
 `;
 

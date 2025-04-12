@@ -1,11 +1,17 @@
-import { MenuRounded } from '@mui/icons-material'
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import { MenuRounded } from '@mui/icons-material';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import { Link as LinkR, NavLink } from "react-router-dom";
 import LogoImg from "../utils/Images/Logo.png";
 import { Avatar } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/reducers/userSlice';
+
+// Import MUI icons
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import SchoolIcon from '@mui/icons-material/School';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 
 const Nav = styled.div`
     background-color: ${({ theme }) => theme.bg};
@@ -134,50 +140,71 @@ const ToggleButton = styled.div`
     border-radius: 12px;
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.menu_primary_text};
-    
 `;
 
-
-function Navbar({toggleTheme, darkMode,currentUser}) {
-    const dispatch=useDispatch();
+function Navbar({ toggleTheme, darkMode, currentUser }) {
+    const dispatch = useDispatch();
     const [isOpen, setisOpen] = useState(false);
-return (
-    <Nav>
-        <NavContainer>
-            <Mobileicon onClick={() => setisOpen(!isOpen)}>
-                <MenuRounded sx={{ color: "inherit" }} />
-            </Mobileicon>
-            <NavLogo to="/">
-                <Logo src={LogoImg} />
-                TrackFitPro
-            </NavLogo>
+    
+    return (
+        <Nav>
+            <NavContainer>
+                <Mobileicon onClick={() => setisOpen(!isOpen)}>
+                    <MenuRounded sx={{ color: "inherit" }} />
+                </Mobileicon>
+                <NavLogo to="/">
+                    <Logo src={LogoImg} />
+                    TrackFitPro
+                </NavLogo>
 
-            <MobileMenu $isOpen={isOpen}>
-            <Navlink to="/">Dashboard</Navlink>
-            <Navlink to="/workouts">Workouts</Navlink>
-            <Navlink to="/tutorials">Tutorials</Navlink>
-            
-            <Navlink to="/contact">Contact</Navlink>
-            </MobileMenu>
+                <MobileMenu $isOpen={isOpen}>
+                    <Navlink to="/">
+                        <DashboardIcon sx={{ marginRight: 1 }} />
+                        Dashboard
+                    </Navlink>
+                    <Navlink to="/workouts">
+                        <FitnessCenterIcon sx={{ marginRight: 1 }} />
+                        Workouts
+                    </Navlink>
+                    <Navlink to="/tutorials">
+                        <SchoolIcon sx={{ marginRight: 1 }} />
+                        Tutorials
+                    </Navlink>
+                    <Navlink to="/contact">
+                        <ContactMailIcon sx={{ marginRight: 1 }} />
+                        Contact
+                    </Navlink>
+                </MobileMenu>
 
-            <NavItems>
-            <Navlink to="/">Dashboard</Navlink>
-            <Navlink to="/workouts">Workouts</Navlink>
-            <Navlink to="/tutorials">Tutorials</Navlink>
-            
-            <Navlink to="/contact">Contact</Navlink>
-            </NavItems>
+                <NavItems>
+                    <Navlink to="/">
+                        <DashboardIcon sx={{ marginRight: 1 }} />
+                        Dashboard
+                    </Navlink>
+                    <Navlink to="/workouts">
+                        <FitnessCenterIcon sx={{ marginRight: 1 }} />
+                        Workouts
+                    </Navlink>
+                    <Navlink to="/tutorials">
+                        <SchoolIcon sx={{ marginRight: 1 }} />
+                        Tutorials
+                    </Navlink>
+                    <Navlink to="/contact">
+                        <ContactMailIcon sx={{ marginRight: 1 }} />
+                        Contact
+                    </Navlink>
+                </NavItems>
 
-            <UserContainer>
-            <ToggleButton onClick={toggleTheme}>
-                {darkMode ? "☀️ Light" : "🌙 Dark"}
-            </ToggleButton>
-                <Avatar src={currentUser?.img}>{currentUser?.name[0]}</Avatar>
-                <TextButton onClick={() => dispatch(logout())}>Logout</TextButton>
-        </UserContainer>
-        </NavContainer>
-    </Nav>
-)
+                <UserContainer>
+                    <ToggleButton onClick={toggleTheme}>
+                        {darkMode ? "☀️ Light" : "🌙 Dark"}
+                    </ToggleButton>
+                    <Avatar src={currentUser?.img}>{currentUser?.name[0]}</Avatar>
+                    <TextButton onClick={() => dispatch(logout())}>Logout</TextButton>
+                </UserContainer>
+            </NavContainer>
+        </Nav>
+    );
 }
 
-export default Navbar
+export default Navbar;

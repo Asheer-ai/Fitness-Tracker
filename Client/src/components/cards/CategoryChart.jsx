@@ -26,25 +26,32 @@ const Title = styled.div`
 
 
 function CategoryChart({ data }) {
+    const transformedData = data?.totalWeeksCaloriesBurnt?.caloriesBurned?.map((calories, index) => ({
+        id: index,
+        label: data.totalWeeksCaloriesBurnt.weeks[index] || `Week ${index + 1}`,
+        value: calories,
+    }));
+
     return (
         <Card>
             <Title>Weekly Calories Burned</Title>
-            {data?.pieChartData && (
+            {transformedData?.length > 0 ? (
                 <PieChart
-                    series={[
-                        {
-                            data: data?.pieChartData,
-                            innerRadius: 30,
-                            outerRadius: 120,
-                            paddingAngle: 5,
-                            cornerRadius: 5,
-                        },
-                    ]}
+                    series={[{
+                        data: transformedData,
+                        innerRadius: 30,
+                        outerRadius: 120,
+                        paddingAngle: 5,
+                        cornerRadius: 5,
+                    }]}
                     height={300}
                 />
+            ) : (
+                <p>No data available</p>
             )}
         </Card>
-    )
+    );
 }
+
 
 export default CategoryChart
