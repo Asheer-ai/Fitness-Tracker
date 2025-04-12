@@ -37,6 +37,7 @@ const NavContainer = styled.div`
     gap: 14px;
     align-items: center;
     justify-content: space-between;
+    
     font-size: 1rem;
 `;
 const Mobileicon = styled.div`
@@ -97,6 +98,11 @@ const UserContainer = styled.div`
     align-items: center;
     padding: 0 6px;
     color: ${({ theme }) => theme.primary};
+    @media screen and (max-width: 768px) {
+        flex-shrink: 1; /* Let it shrink to fit */
+        flex-wrap: wrap; /* Wrap if needed */
+        justify-content: flex-end;
+    }
 `;
 
 const TextButton = styled.div`
