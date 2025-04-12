@@ -2,7 +2,7 @@ import { MenuRounded } from '@mui/icons-material';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link as LinkR, NavLink } from "react-router-dom";
-import LogoImg from "../utils/Images/Logo.png";
+import LogoImg from "../../public/Logo.png";
 import { Avatar } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/reducers/userSlice';

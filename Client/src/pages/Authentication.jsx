@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from 'react'
-import LogoImage from "../utils/Images/Logo.png"
-import AuthImage from "../utils/Images/AuthImage.jpg"
+import LogoImage from "../../public/Logo.ong"
+import AuthImage from "../../public/AuthImage.jpg"
 import SignUp from "../components/SignUp";
 import SignIn from "../components/SignIn";
 
