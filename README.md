@@ -6,7 +6,7 @@ TrackFitPro is a full-stack fitness tracker web application that helps users log
 
 ## 🚀 Live Demo
 
-[TrackFitPro Live Demo 🚀](https://your-deployment-link.com)
+[TrackFitPro Live Demo 🚀](https://fittrackpro-2.netlify.app/)
 
 ---
 
