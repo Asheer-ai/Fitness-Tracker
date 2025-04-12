@@ -142,7 +142,7 @@ trackFitPro/
 ## 📸 Screenshots
 
 ### 🔐 Login Page
-![Login Screenshot](./Client/public/AuthImage.jpg)
+![Login Screenshot](https://github.com/Asheer-ai/Fitness-Tracker/blob/41d8db78e13de9b58e5943db50fd4f0091736e9c/Screenshot%202025-04-12%20153813.png)
 
 ### 🏠 Dashboard
 ![Dashboard Screenshot](./Client/src/utils/Images/Logo.png) <!-- Replace with actual dashboard image -->
