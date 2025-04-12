@@ -1,6 +1,12 @@
-# 💪 [TrackFitPro - AI Fitness Tracker App🚀](https://your-deployment-link.com)
+# 💪 TrackFitPro - AI Fitness Tracker App
 
 TrackFitPro is a full-stack fitness tracker web application that helps users log their workouts, track progress, and visualize stats — all in a clean, responsive UI with support for light and dark themes. It also integrates AI-generated workout suggestions to optimize training.
+
+---
+
+## 🚀 Live Demo
+
+[TrackFitPro Live Demo 🚀](https://your-deployment-link.com)
 
 ---
 
