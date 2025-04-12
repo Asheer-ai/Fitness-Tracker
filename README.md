@@ -146,11 +146,18 @@ trackFitPro/
 
 ### 🏠 Dashboard
 ![Dashboard Screenshot1](https://github.com/Asheer-ai/Fitness-Tracker/blob/5912bd4ef3ec8830fa378dc390ef284577993c2e/Screenshot%202025-04-12%20153134.png) 
-
 ![Dashboard Screenshot2](https://github.com/Asheer-ai/Fitness-Tracker/blob/5912bd4ef3ec8830fa378dc390ef284577993c2e/Screenshot%202025-04-12%20153206.png)
+## Dark mode
+![Dashboard Screenshot3](https://github.com/Asheer-ai/Fitness-Tracker/blob/66830d16ab8306d035f1e4fa7887241d7e4e9ad2/Screenshot%202025-04-12%20153225.png)
+![Dashboard Screenshot4](https://github.com/Asheer-ai/Fitness-Tracker/blob/66830d16ab8306d035f1e4fa7887241d7e4e9ad2/Screenshot%202025-04-12%20153237.png)
 
 ### 📆 Workout Calendar
 ![Calendar Screenshot](https://github.com/Asheer-ai/Fitness-Tracker/blob/fb4922d61474e29a0bb7943446965f70b9cd7531/Screenshot%202025-04-12%20153250.png)
+
+### 👨‍🏫 Tutorials
+![Tutorials Screenshot](https://github.com/Asheer-ai/Fitness-Tracker/blob/66830d16ab8306d035f1e4fa7887241d7e4e9ad2/Screenshot%202025-04-12%20153306.png)
+![Tutorials Screenshot2](https://github.com/Asheer-ai/Fitness-Tracker/blob/66830d16ab8306d035f1e4fa7887241d7e4e9ad2/Screenshot%202025-04-12%20153317.png)
+
 
 ### 📞Contact Us
 ![Contact Us](https://github.com/Asheer-ai/Fitness-Tracker/blob/3c4da820710590a4801394df3080d9af7ed606cc/Screenshot%202025-04-12%20153331.png) 
