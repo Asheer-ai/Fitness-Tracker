@@ -140,7 +140,7 @@ const MobileMenu = styled.ul`
 
 const ToggleButton = styled.div`
     cursor: pointer;
-    font-size: 16px;
+    font-size: 10px;
     font-weight: 600;
     padding: 6px 12px;
     border-radius: 12px;
