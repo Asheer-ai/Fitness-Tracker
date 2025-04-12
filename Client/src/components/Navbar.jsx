@@ -105,7 +105,7 @@ const TextButton = styled.div`
     text-align: end;
     color: ${({ theme }) => theme.secondary};
     cursor: pointer;
-    font-size: 16px;
+    font-size: 10px;
     transition: all 0.3s ease;
     font-weight: 600;
     &:hover {
