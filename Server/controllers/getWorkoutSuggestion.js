@@ -22,48 +22,43 @@ export const getWorkoutSuggestion = async (req, res, next) => {
         return res.status(200).json({
         suggestion: `You don't have any workout history yet. Here's a basic beginner plan:
 
-#Full Body
-- Bodyweight Squats
-- 3 sets 15 reps
-- 0 kg
-- 5 min
+        #Full Body
+        - Bodyweight Squats
+        - 3 sets 15 reps
+        - 0 kg
+        - 5 min
 
-#Cardio
-- Brisk Walking
-- 1 set 20 min
-- 0 kg
-- 20 min`,
+        `,
         });
     }
 
     // ✅ Get the most recent workout directly
     const mostRecentWorkout = recentWorkouts[0];
     const previousLine = `Category: ${mostRecentWorkout.category}, Name: ${mostRecentWorkout.workoutName}, Duration: ${mostRecentWorkout.duration}min, Sets: ${mostRecentWorkout.sets}, Reps: ${mostRecentWorkout.reps}, Weight: ${mostRecentWorkout.weight}kg`;
-    console.log("recent workout", previousLine);
+    
 
     const category = mostRecentWorkout.category.trim();
-    console.log("previous category", category);
+    
 
     const workoutNames = recentWorkouts.map((w) => w.workoutName).join(", ");
-    console.log("all workout names", workoutNames);
 
     const prompt = `
-You are a strict workout assistant.
+    You are a strict workout assistant.
 
-The user did this workout previously:
-${previousLine}
+    The user did this workout previously:
+    ${previousLine}
 
-Now generate ONE **new** workout that:
-- Belongs ONLY to the *same* muscle category: "${category}"
-- Is not a repeat
-- Exclude previous workouts: ${workoutNames}
-- Follow this **exact format** with 5 lines:
+    Now generate ONE **new** workout that:
+    - Belongs ONLY to the *same* muscle category: "${category}"
+    - Is not a repeat
+    - Exclude previous workouts: ${workoutNames}
+    - Follow this **exact format** with 5 lines:
 
-#${category}  
--Workout Name  
--x setsXy reps  
--z kg or Bodyweight  
--d min
+    #${category}  
+    -Workout Name  
+    -x setsXy reps  
+    -z kg or Bodyweight  
+    -d min
 
 ⚠️ Return **only one workout**, no explanations or intros. Keep it short and clean.
 `;

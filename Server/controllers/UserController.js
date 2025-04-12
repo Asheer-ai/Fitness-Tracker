@@ -296,7 +296,7 @@ export const getCaloriesPerMinuteFromGemini = async (workoutName) => {
         if (isNaN(calories)) return 5; // fallback default
         return calories;
     } catch (error) {
-        console.error("Gemini Error:", error.message);
+        
         return 5; // fallback default
     }
 };
@@ -321,7 +321,7 @@ const parseWorkoutLine = (parts) => {
 // Function to calculate calories burnt for a workout
 const calculateCaloriesBurnt = async (workoutDetails) => {
     const durationInMinutes = parseInt(workoutDetails.duration);
-    const weightInKg = parseInt(workoutDetails.weight);
+    
 
     const caloriesBurntPerMinute = await getCaloriesPerMinuteFromGemini(workoutDetails.workoutName);
 
