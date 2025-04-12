@@ -105,7 +105,7 @@ const TextButton = styled.div`
     text-align: end;
     color: ${({ theme }) => theme.secondary};
     cursor: pointer;
-    font-size: 10px;
+    font-size: 14px;
     transition: all 0.3s ease;
     font-weight: 600;
     &:hover {
@@ -136,7 +136,7 @@ const MobileMenu = styled.ul`
 
 const ToggleButton = styled.div`
     cursor: pointer;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 600;
     padding: 6px 12px;
     border-radius: 12px;
@@ -201,7 +201,14 @@ function Navbar({ toggleTheme, darkMode, currentUser }) {
                     <ToggleButton onClick={toggleTheme}>
                         {darkMode ? "☀️ Light" : "🌙 Dark"}
                     </ToggleButton>
-                    <Avatar src={currentUser?.img}>{currentUser?.name[0]}</Avatar>
+                    <Avatar
+                    src={currentUser?.img}
+                    sx={{
+                        display: { xs: 'none', md: 'flex' },
+                    }}
+                    >
+                    {currentUser?.name[0]}
+                    </Avatar>
                     <TextButton onClick={() => dispatch(logout())}>Logout</TextButton>
                 </UserContainer>
             </NavContainer>
